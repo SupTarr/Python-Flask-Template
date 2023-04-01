@@ -19,7 +19,7 @@ This project was created with:
 Clone the project
 
 ```sh
-git clone https://github.com/SupTarr/Python-FastAPI-Template.git
+git clone https://github.com/SupTarr/Python-Flask-Template
 ```
 
 ### Virtual environment on windows
