@@ -50,8 +50,8 @@ In the command prompt, ensure your virtual environment is active, and execute th
 pip install -r requirements.txt
 ```
 
-### FastAPI
+### Flask
 
 ```cmd
-uvicorn app.main:app --reload
+python -m flask --app app --debug run
 ```

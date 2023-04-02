@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='borders.css') }}"
+    />
+    <title>Paws Rescue Center 🐾</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Paws Rescue Center</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/about"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 id="title"><center>Paws Rescue Center 🐾</center></h1>
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Bio</th>
+      </tr>
+      <tr>
+        <td><img src= "{{ url_for('static', filename= '1.jpg') }}" height="100" alt="Nelly cat" /></td>
+        <td>Nelly</td>
+        <td>5 weeks</td>
+        <td>
+          I am a tiny kitten rescued by the good people at Paws Rescue Center. I
+          love squeaky toys and cuddles.
+        </td>
+      </tr>
+      <tr>
+        <td><img src= "{{ url_for('static', filename= '2.jpg') }}" height="100" alt="Yuki cat" /></td>
+        <td>Yuki</td>
+        <td>8 months</td>
+        <td>I am a handsome gentle-cat. I like to dressup in bow ties.</td>
+      </tr>
+      <tr>
+        <td><img src= "{{ url_for('static', filename= '3.jpg') }}" height="100" alt="Basker cat" /></td>
+        <td>Basker</td>
+        <td>1 year</td>
+        <td>I love barking. But, I love my friends more.</td>
+      </tr>
+      <tr>
+        <td><img src= "{{ url_for('static', filename= '4.jpg') }}" height="100" alt="Mr.Furrkins cat" /></td>
+        <td>Mr.Furrkins</td>
+        <td>5 years</td>
+        <td>Probably napping.</td>
+      </tr>
+    </table>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
