@@ -2,7 +2,7 @@
 
 ## About The Project
 
-This project was completed as part of `Flask: Develop Web Applications in Python` form `educative`. I am tasked to make full use of Flask and Python knowledge and its accompanying documentation to create an a website for a fictional animal rescue organization.
+This project was completed as part of `Flask: Develop Web Applications in Python` form `educative`. I am tasked to make full use of Flask and Python knowledge and its accompanying documentation to create a website for a fictional animal rescue organization.
 
 ## Technologies
 
