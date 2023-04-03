@@ -1,6 +1,9 @@
-from flask import Flask, request, render_template, abort, session, redirect, url_for
+from flask import Flask, render_template, abort, session, redirect, url_for
 from forms import LoginForm, SignUpForm
 from flask_session import Session
+from urllib.parse import quote_plus
+from flask_sqlalchemy import SQLAlchemy
+import psycopg2
 
 import os
 
@@ -11,7 +14,21 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = SECRET_KEY
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://%s:%s@%s:%s/%s" % (
+    os.getenv("DATABASE_USERNAME"),
+    quote_plus(os.getenv("DATABASE_PASSWORD")),
+    os.getenv("DATABASE_HOSTNAME"),
+    os.getenv("DATABASE_PORT"),
+    os.getenv("DATABASE_NAME"),
+)
 Session(app)
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+    email = db.Column(db.String, primary_key=True, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
+
 
 users = [
     {
@@ -47,6 +64,10 @@ pets = [
 
 @app.route("/")
 def home():
+    db.create_all()
+    new_user = User(email="archie.andrews@email.com", password="football4life")
+    db.session.add(new_user)
+    db.session.commit()
     return render_template("home.html", pets=pets)
 
 
