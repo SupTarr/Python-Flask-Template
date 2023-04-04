@@ -39,3 +39,34 @@ class SignUpForm(LoginForm):
         ],
     )
     submit = SubmitField("Sign Up")
+
+
+class EditPetForm(LoginForm):
+    name = StringField(
+        "Name",
+        validators=[
+            InputRequired(),
+            Length(
+                min=-1, max=100, message="The maximum length of the string is %(max)d"
+            ),
+        ],
+    )
+    age = StringField(
+        "Age",
+        validators=[
+            InputRequired(),
+            Length(
+                min=-1, max=100, message="The maximum length of the string is %(max)d"
+            ),
+        ],
+    )
+    bio = StringField(
+        "Bio",
+        validators=[
+            InputRequired(),
+            Length(
+                min=-1, max=300, message="The maximum length of the string is %(max)d"
+            ),
+        ],
+    )
+    submit = SubmitField("Edit")

@@ -15,5 +15,46 @@
     <p class="card-text">{{ pet['age'] }}</p>
     <p class="card-text">{{ pet['bio'] }}</p>
   </div>
+  <form 
+    class="card-body" 
+    action="{{ url_for('pet_details', pet_id = pet['id']) }}" 
+    method="POST"
+  >
+    {{ form.csrf_token }}
+    <div class="mb-3">
+      {{ form.name.label }} 
+      {{ form.name(class_="form-control", value=pet['name']) }} 
+      {% if form.name.errors %}
+        {% for error in form.name.errors %}
+          <b style="color:tomato;"> {{ error }} </b> 
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="mb-3">
+      {{ form.age.label }} 
+      {{ form.age(class_="form-control", value=pet['age']) }}
+      {% if form.age.errors %}
+        {% for error in form.age.errors %}
+          <b style="color:tomato;"> {{ error }} </b> 
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="mb-3">
+      {{ form.bio.label }} 
+      {{ form.bio(class_="form-control", value=pet['bio']) }}
+      {% if form.bio.errors %}
+        {% for error in form.bio.errors %}
+          <b style="color:tomato;"> {{ error }} </b> 
+        {% endfor %}
+      {% endif %}
+    </div>
+    {{ form.submit(class_="btn btn-primary") }}
+  </form>
+  <button 
+    class="btn btn-danger"
+    onclick="location.href='{{ url_for('delete_pet', pet_id = pet.id)}}'"
+  > 
+    Delete 
+  </button>
 </div>
 {% endblock %}
