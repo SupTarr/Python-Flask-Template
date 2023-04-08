@@ -41,7 +41,7 @@ class SignUpForm(LoginForm):
     submit = SubmitField("Sign Up")
 
 
-class EditPetForm(LoginForm):
+class EditPetForm(FlaskForm):
     name = StringField(
         "Name",
         validators=[

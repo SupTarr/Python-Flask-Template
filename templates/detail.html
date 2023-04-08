@@ -1,29 +1,28 @@
 {% extends "base.html" %} 
 
 {% block title %}
-{{ pet["name"] }}'s Details - Paws Rescue Center
+{{ pet.name }}'s Details - Paws Rescue Center
 {% endblock %}
 
 {% block content %}
 <div class="card mx-auto" style="width: 50%;">
   <img
-    src= "{{ url_for('static', filename = pet['id']|string + ".jpg") }}"
-    alt="{{ pet['name'] }} cat"
+    src= "{{ url_for('static', filename = pet.id|string + ".jpg") }}"
+    alt="{{ pet.name }} cat"
   />
   <div class="card-body">
-    <h5 class="card-title">{{ pet['name'] }}</h5>
-    <p class="card-text">{{ pet['age'] }}</p>
-    <p class="card-text">{{ pet['bio'] }}</p>
+    <h5 class="card-title">{{ pet.name }}</h5>
+    <p class="card-text">{{ pet.age }}</p>
+    <p class="card-text">{{ pet.bio }}</p>
   </div>
   <form 
     class="card-body" 
-    action="{{ url_for('pet_details', pet_id = pet['id']) }}" 
+    action="{{ url_for('pet_details', pet_id = pet.id) }}" 
     method="POST"
   >
-    {{ form.csrf_token }}
     <div class="mb-3">
       {{ form.name.label }} 
-      {{ form.name(class_="form-control", value=pet['name']) }} 
+      {{ form.name(class_="form-control", value=pet.name) }} 
       {% if form.name.errors %}
         {% for error in form.name.errors %}
           <b style="color:tomato;"> {{ error }} </b> 
@@ -32,7 +31,7 @@
     </div>
     <div class="mb-3">
       {{ form.age.label }} 
-      {{ form.age(class_="form-control", value=pet['age']) }}
+      {{ form.age(class_="form-control", value=pet.age) }}
       {% if form.age.errors %}
         {% for error in form.age.errors %}
           <b style="color:tomato;"> {{ error }} </b> 
@@ -41,13 +40,14 @@
     </div>
     <div class="mb-3">
       {{ form.bio.label }} 
-      {{ form.bio(class_="form-control", value=pet['bio']) }}
+      {{ form.bio(class_="form-control", value=pet.bio) }}
       {% if form.bio.errors %}
         {% for error in form.bio.errors %}
           <b style="color:tomato;"> {{ error }} </b> 
         {% endfor %}
       {% endif %}
     </div>
+    {{ form.csrf_token }}
     {{ form.submit(class_="btn btn-primary") }}
   </form>
   <button 
